@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppContext } from 'AppContext/AppContext';
-import GameView from 'views/GameView/GameView';
 import { 
   ImageWrapper,
   LoadingWrapper,
@@ -21,7 +20,7 @@ const MainModal = ({ isOpen, closeModal, status }) => {
   const { animalData, setCurrentView } = useContext(AppContext);
 
   const changeView = () => {
-    setCurrentView(<GameView />);
+    setCurrentView('GAME');
   }
 
   return (

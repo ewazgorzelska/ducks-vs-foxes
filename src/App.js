@@ -1,16 +1,18 @@
-import React from 'react';
-import { AppContextProvider } from 'AppContext/AppContext';
+import React, { useContext } from 'react';
+import { AppContext } from 'AppContext/AppContext';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
 import StartView from 'views/StartView/StartView';
+import GameView from 'views/GameView/GameView';
 
 function App() {
 
+  const { currentView } = useContext(AppContext);
+
   return (
-      <AppContextProvider>
-        <MainTemplate>
-          <StartView />
-        </MainTemplate>
-      </AppContextProvider>
+      <MainTemplate>
+        {currentView === 'START' && <StartView />}
+        {currentView === 'GAME' && <GameView />}
+      </MainTemplate>
   );
 }
 
