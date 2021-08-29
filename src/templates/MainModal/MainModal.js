@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppContext } from 'AppContext/AppContext';
+import GameView from 'views/GameView/GameView';
 import { 
   ImageWrapper,
   LoadingWrapper,
@@ -15,27 +16,31 @@ import { VscLoading } from "react-icons/vsc";
 
 const modalContainer = document.getElementById('modal-container')
 
-const MainModal = ({ isOpen, closeModal }) => {
+const MainModal = ({ isOpen, closeModal, status }) => {
 
-  const { animalData } = useContext(AppContext);
+  const { animalData, setCurrentView } = useContext(AppContext);
+
+  const changeView = () => {
+    setCurrentView(<GameView />);
+  }
 
   return (
     isOpen &&
     ReactDOM.createPortal(
       <ModalContainer>
         <CloseButton onClick={closeModal}><GrFormClose size={32}/></CloseButton>
-        { animalData.err 
-                && !animalData.isFetching 
-                && <Error animalData={animalData}>Error!</Error> }
-        { animalData.isFetching
-                && <LoadingWrapper animalData={animalData}>
+        { status.err 
+                && !status.isFetching 
+                && <Error status={status}>Error!</Error> }
+        { status.isFetching
+                && <LoadingWrapper status={status}>
                       <div>Is loading...</div>
                       <VscLoading />
                     </LoadingWrapper> }
-        { animalData.image 
-          && !animalData.isFetching  
+        { animalData 
+          && !status.isFetching  
           && <ImageWrapper animalData={animalData}/> }
-        <NewGameButton>Start Game</NewGameButton>
+        <NewGameButton onClick={changeView}>Start Game</NewGameButton>
       </ModalContainer>,
       modalContainer
     )

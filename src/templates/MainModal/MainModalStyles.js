@@ -10,7 +10,7 @@ export const ContentWrapper = styled.div`
 export const ImageWrapper = styled(ContentWrapper)`
   background-image: url('${props => props.animalData.image}');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
 `;
 
 export const LoadingWrapper = styled(ContentWrapper)`

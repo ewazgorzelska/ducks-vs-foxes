@@ -19,7 +19,6 @@ const FOX_URL = 'https://randomfox.ca/floof/';
 const StartView = () => {
 
     const [isOpen, setOpen] = useState(false);
-
     const { setAnimalData } = useContext(AppContext);
     const [status, setStatus] = useState({
                                         err: null, 
@@ -68,7 +67,7 @@ const StartView = () => {
                 <Button onClick={openDuckModal}>Quack</Button>
                 <Button onClick={openFoxModal}>Woof</Button>
             </ButtonsWrapper>
-            <MainModal isOpen={isOpen} closeModal={closeModal} />
+            <MainModal isOpen={isOpen} closeModal={closeModal} status={status}/>
         </StartViewContainer>
     )
 }

@@ -1,9 +1,10 @@
 import React from 'react';
 import { AppContextProvider } from 'AppContext/AppContext';
-import StartView from 'views/StartView/StartView';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
+import StartView from 'views/StartView/StartView';
 
 function App() {
+
   return (
       <AppContextProvider>
         <MainTemplate>
