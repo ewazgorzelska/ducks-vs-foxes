@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from "axios";
+import { AppContext } from 'AppContext/AppContext';
 import {
     StartViewContainer,
     GameTitle,
@@ -9,7 +10,6 @@ import {
     AnimalWrapper,
 } 
     from './StartViewStyles';
-//import DuckModal from 'components/molecules/DuckModal/DuckModal';
 import { Button } from 'components/atoms/Button/Button';
 import MainModal from 'templates/MainModal/MainModal';
 
@@ -19,59 +19,40 @@ const FOX_URL = 'https://randomfox.ca/floof/';
 const StartView = () => {
 
     const [isOpen, setOpen] = useState(false);
-    const [animalData, setAnimalData] = useState({
-                                        image: '',
+
+    const { setAnimalData } = useContext(AppContext);
+    const [status, setStatus] = useState({
                                         err: null, 
                                         isFetching: false
                                     });
-    //const [foxData, setFoxData] = useState({fox: '', isFetching: false})
-
-    // const fetchDuck = () => {     
-    //         setDuckData({...duckData, isFetching: true});
-    //         axios.get(DUCK_URL)
-    //         .then(response => {
-    //             setDuckData({
-    //                 duck: response.data.url,
-    //                 isFetching: false});
-    //         }
-    //             )
-    //         .catch(err => {
-    //             setDuckData({
-    //                 ...duckData, 
-    //                 err, 
-    //                 isFetching: false});
-    //         });
-    // };
 
     const fetchAnimal = (url) => {     
-        setAnimalData({...animalData, isFetching: true});
+        setStatus({...status, isFetching: true});
         axios.get(url)
         .then(response => {
             setAnimalData({
                 image: url === FOX_URL ? response.data.image : response.data.url,
-                isFetching: false
             });
+            setStatus({...status, isFetching: false});
         }
             )
         .catch(err => {
-            setAnimalData({
-                ...animalData, 
+            setStatus({
                 err, 
                 isFetching: false});
         });
 };
 
     const closeModal = () => {
-        
         setOpen(!isOpen);
     }
     
-    const toggleFoxModal = () => {
+    const openFoxModal = () => {
         setOpen(true);
         fetchAnimal(FOX_URL);
     }
 
-    const toggleDuckModal = () => {
+    const openDuckModal = () => {
         setOpen(true);
         fetchAnimal(DUCK_URL);
     }
@@ -84,11 +65,10 @@ const StartView = () => {
                 <Animal2 />
             </AnimalWrapper>            
             <ButtonsWrapper>
-                <Button onClick={toggleDuckModal}>Quack</Button>
-                <Button onClick={toggleFoxModal}>Woof</Button>
+                <Button onClick={openDuckModal}>Quack</Button>
+                <Button onClick={openFoxModal}>Woof</Button>
             </ButtonsWrapper>
-            <MainModal isOpen={isOpen} closeModal={closeModal} animalData={animalData} />
-                {/* <DuckModal /> */}
+            <MainModal isOpen={isOpen} closeModal={closeModal} />
         </StartViewContainer>
     )
 }
