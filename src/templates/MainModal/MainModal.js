@@ -18,8 +18,19 @@ const modalContainer = document.getElementById('modal-container')
 const MainModal = ({ isOpen, closeModal, status }) => {
 
   const { animalData, setCurrentView } = useContext(AppContext);
+  const { setImgSize } = useContext(AppContext);
 
-  const changeView = () => {
+  function getImageSize(url){
+    let img=new Image();
+    img.src=url;
+    img.onload=function(){
+      const size = {width: this.width, height: this.height};
+      setImgSize({width: size.width, height: size.height})
+    };  
+   }
+
+  const startGame = () => {
+    getImageSize();
     setCurrentView('GAME');
   }
 
@@ -39,7 +50,7 @@ const MainModal = ({ isOpen, closeModal, status }) => {
         { animalData 
           && !status.isFetching  
           && <ImageWrapper animalData={animalData}/> }
-        <NewGameButton onClick={changeView}>Start Game</NewGameButton>
+        <NewGameButton onClick={startGame}>Start Game</NewGameButton>
       </ModalContainer>,
       modalContainer
     )

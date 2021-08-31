@@ -6,13 +6,17 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
 
     const [ animalData, setAnimalData ] = useState();
-    const [currentView, setCurrentView] = useState('START');
+    const [ currentView, setCurrentView ] = useState('START');
+    const [ imgSize, setImgSize ] = useState({width:0, height: 0});
+
     return (
         <AppContext.Provider value={{ 
                                     animalData, 
                                     setAnimalData,
                                     currentView, 
-                                    setCurrentView
+                                    setCurrentView,
+                                    imgSize,
+                                    setImgSize
                                     }}>
             <GlobalStyle />
             {children}
