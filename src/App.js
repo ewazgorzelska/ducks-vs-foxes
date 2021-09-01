@@ -6,12 +6,17 @@ import GameView from 'views/GameView/GameView';
 
 function App() {
 
-  const { currentView, imgSize, animalData } = useContext(AppContext);
-
+  const { currentView, imgSize, animalData, dropped, setDropped } = useContext(AppContext);
   return (
       <MainTemplate>
         {currentView === 'START' && <StartView />}
-        {currentView === 'GAME' && <GameView animalData={animalData} imgSize={imgSize}/>}
+        {currentView === 'GAME' 
+        && <GameView 
+          animalData={animalData} 
+          imgSize={imgSize}
+          dropped={dropped} 
+          setDropped={setDropped}
+          />}
       </MainTemplate>
   );
 }

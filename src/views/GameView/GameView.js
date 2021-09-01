@@ -1,25 +1,55 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shuffleArray } from 'helpers/shuffleArray';
 
-const Puzzle = styled.div`
-    background-image: url('${props => props.animalData.image}');
+const halfSize = css`
     width: ${props => props.imgSize.width/2 +'px'};
     height: ${props => props.imgSize.height/2 +'px'};
-    
+`;
+
+const fullWidth = css`
+    width: ${props => props.imgSize.width +'px'}
+`;
+
+const fullHeight = css`
+    height: ${props => props.imgSize.height +'px'};
+`;
+
+const bgImage = css`
+    background-image: url('${props => props.animalData.image}');
+`;
+
+const bgPosition_1 = css`
+    background-position: right ${props => props.imgSize.width/2 +'px'} bottom ${props => props.imgSize.height/2 +'px'};
+`;
+
+const bgPosition_2 = css`
+    background-position: right ${props => props.imgSize.width +'px'} bottom ${props => props.imgSize.height/2 +'px'};
+`;
+
+const bgPosition_3 = css`
+    background-position: right ${props => props.imgSize.width/2 +'px'} bottom ${props => props.imgSize.height +'px'};
+`;
+const bgPosition_4 = css`
+    background-position: right ${props => props.imgSize.width +'px'} bottom ${props => props.imgSize.height +'px'};
+`;
+
+const Puzzle = styled.div`
+    ${halfSize}
+    ${bgImage};
 `;
 
 const Piece1 = styled(Puzzle)`
-    background-position: right ${props => props.imgSize.width/2 +'px'} bottom ${props => props.imgSize.height/2 +'px'};
+    ${bgPosition_1}
 `;
 const Piece2 = styled(Puzzle)`
-    background-position: right ${props => props.imgSize.width/2 +'px'} bottom 0px;
+    ${bgPosition_2}
 `;
 const Piece3 = styled(Puzzle)`
-    background-position: right 0 bottom ${props => props.imgSize.height/2 +'px'};
+    ${bgPosition_3}
 `;
 const Piece4 = styled(Puzzle)`
-    background-position: right ${props => props.imgSize.width +'px'} bottom ${props => props.imgSize.height +'px'};
+    ${bgPosition_4}
 `;
 
 const PiecesContainer = styled.div`
@@ -28,53 +58,78 @@ const PiecesContainer = styled.div`
 `;
 
 const DropZone = styled(PiecesContainer)`
-
+    ${fullWidth};
+    ${fullHeight};
 `;
 
 const DropField = styled.div`
-    border: 2px solid orange;
-    width: ${props => props.imgSize.width/2 +'px'};
-    height: ${props => props.imgSize.height/2 +'px'};
+    ${halfSize}
+    ${bgImage}
+    opacity: 0.5;
+
+    &:first-child {
+        ${bgPosition_1}
+    }
+    &:nth-child(2) {
+        ${bgPosition_2}
+    }
+    &:nth-child(3) {
+        ${bgPosition_3}
+    }
+    &:last-child {
+        ${bgPosition_4}
+    }
 `;
 
 const PuzzleBoard = styled.div`
     display: flex;
     margin: 3em auto auto auto;
+    gap: 20px;
 `;
 
 const GameView = ({ animalData, imgSize }) => {
    
     const pieces = [
-        <Piece1 draggable="true" key="piece1" animalData={animalData} imgSize={imgSize}
+        <Piece1 
+            draggable="true" 
+            key="piece1" 
+            animalData={animalData} 
+            imgSize={imgSize}
             id="piece1"
             onDragStart={e => handleDragStart(e)}  
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
-            onDragEnter={e => handleDragEnter(e)}
-            onDragLeave={e => handleDragLeave(e)}/>,
-        <Piece2 draggable="true" key="piece2" animalData={animalData} imgSize={imgSize}
+            />,
+        <Piece2 
+            draggable="true" 
+            key="piece2" 
+            animalData={animalData} 
+            imgSize={imgSize}
             id="piece2"
             onDragStart={e => handleDragStart(e)}
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
-            onDragEnter={e => handleDragEnter(e)}
-            onDragLeave={e => handleDragLeave(e)}
         />,
-        <Piece3 draggable="true" key="piece3" animalData={animalData} imgSize={imgSize}
+        <Piece3 
+            draggable="true" 
+            key="piece3" 
+            animalData={animalData} 
+            imgSize={imgSize}
             id="piece3"
             onDragStart={e => handleDragStart(e)}
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
-            onDragEnter={e => handleDragEnter(e)}
-            onDragLeave={e => handleDragLeave(e)}
         />,
-        <Piece4 draggable="true" key="piece4" animalData={animalData} imgSize={imgSize}
+        <Piece4 
+            draggable="true" 
+            key="piece4" 
+            animalData={animalData} 
+            imgSize={imgSize}
             id="piece4"
             onDragStart={e => handleDragStart(e)}
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
-            onDragEnter={e => handleDragEnter(e)}
-            onDragLeave={e => handleDragLeave(e)}/>
+            />
     ];
 
     shuffleArray(pieces);
@@ -83,81 +138,51 @@ const GameView = ({ animalData, imgSize }) => {
         e.dataTransfer.setData("text/plain", e.target.id);
       };
 
-    const handleDragEnter = e => {
+    const handleDragOver = e => {
         e.preventDefault();
-        e.stopPropagation();
-
-      };
-
-      const handleDragLeave = e => {
-        e.preventDefault();
-        e.stopPropagation();
-      };
-
-      const handleDragOver = e => {
-        e.preventDefault();
-        e.stopPropagation();
-      };
+    };
 
       const handleDrop = e => {
         e.preventDefault();
-        e.stopPropagation();
-        const data = e.dataTransfer.getData("text/plain");
+        let data = e.dataTransfer.getData("text/plain");
         e.target.appendChild(document.getElementById(data));
+        e.target.style.opacity = "1";
       };
 
     return (
         <PuzzleBoard>
-            <PiecesContainer>
-                {pieces.map(item => item)}
-            </PiecesContainer>
-            <DropZone>
+            <DropZone imgSize={imgSize} 
+                        >
                 <DropField
-                    imgSize={imgSize} 
+                    imgSize={imgSize}
+                    animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     />
                 <DropField
-                    imgSize={imgSize} 
+                    imgSize={imgSize}
+                    animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     />
                 <DropField
-                    imgSize={imgSize} 
+                    imgSize={imgSize}
+                    animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     />
                 <DropField
-                    imgSize={imgSize} 
+                    imgSize={imgSize}
+                    animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
                     />
             </DropZone>
+            <PiecesContainer>
+                {pieces.map(item => item)}
+            </PiecesContainer>
         </PuzzleBoard>
     )
 }
 
 export default GameView;
-
-
-// const drag = event => {
-//     event.dataTransfer.setData('text', event.target.id);
-//   };
-  
-//   const allowDrop = event => {
-//    if (event.target.tagName !== 'IMG') {
-//      event.preventDefault();
-//     } 
-//   };
-  
-//   const drop = event => {
-//     event.preventDefault();
-//     const data = event.dataTransfer.getData('text');
-//     event.target.appendChild(document.getElementById(data));
-//     if (event.target.dataset.boxid === event.target.firstChild.dataset.pieceid) {
-//       event.target.style.border = 'none';
-//       arrOfIds.push(event.target.dataset.boxid);
-//       event.target.firstChild.ondragstart = function() { return false; };
-//       checkCorectness();
-//     }
-//   };
