@@ -12,9 +12,16 @@ import {
     from './StartViewStyles';
 import { Button } from 'components/atoms/Button/Button';
 import MainModal from 'templates/MainModal/MainModal';
+import { API_KEY } from 'filestack/api';
 
 const DUCK_URL = 'https://random-d.uk/api/v2/random?type=jpg';
 const FOX_URL = 'https://randomfox.ca/floof/';
+
+const FILESTACK_URL = {
+    FILESTACK: 'https://cdn.filestackcontent.com/',
+    API_KEY,
+    PARAM: '/resize=width:400/'
+}
 
 const StartView = () => {
 
@@ -30,7 +37,15 @@ const StartView = () => {
         axios.get(url)
         .then(response => {
             setAnimalData({
-                image: url === FOX_URL ? response.data.image : response.data.url,
+                image: url === FOX_URL ? 
+                    FILESTACK_URL.FILESTACK 
+                        + FILESTACK_URL.API_KEY 
+                        + FILESTACK_URL.PARAM 
+                        + response.data.image 
+                    : FILESTACK_URL.FILESTACK 
+                        + FILESTACK_URL.API_KEY 
+                        + FILESTACK_URL.PARAM 
+                        + response.data.url,
             });
             setStatus({...status, isFetching: false});
         }

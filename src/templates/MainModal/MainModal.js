@@ -20,9 +20,9 @@ const MainModal = ({ isOpen, closeModal, status }) => {
   const { animalData, setCurrentView } = useContext(AppContext);
   const { setImgSize } = useContext(AppContext);
 
-  function getImageSize(url){
+  function getImageSize(){
     let img=new Image();
-    img.src=url;
+    img.src=animalData.image;
     img.onload=function(){
       const size = {width: this.width, height: this.height};
       setImgSize({width: size.width, height: size.height})

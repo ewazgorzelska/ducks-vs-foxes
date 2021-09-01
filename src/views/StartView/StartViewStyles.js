@@ -10,7 +10,6 @@ export const StartViewContainer = styled.div`
     margin: 3em auto auto auto;
     width: 500px;
     height: 600px;
-    border: 1px solid black;
     background-color: #4267B2;
     -webkit-box-shadow: 5px 5px 15px 5px rgba(66,103,178,0.6); 
     box-shadow: 5px 5px 15px 5px rgba(66,103,178,0.6);
