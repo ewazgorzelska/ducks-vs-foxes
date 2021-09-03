@@ -2,8 +2,7 @@ import React from 'react';
 import { shuffleArray } from 'helpers/shuffleArray';
 import * as Styled from './GameViewStyles';
 
-
-const GameView = ({ animalData, imgSize, faded, setFaded }) => {
+const GameView = ({ animalData, imgSize }) => {
     const dropZone = document.getElementById('dropZone');
    
     const pieces = [
@@ -65,16 +64,15 @@ const GameView = ({ animalData, imgSize, faded, setFaded }) => {
         e.preventDefault();
     };
 
-      const handleDrop = e => {
+    const handleDrop = e => {
         e.preventDefault();
         
         let data = e.dataTransfer.getData("text/plain");
       
         e.target.appendChild(document.getElementById(data));
         e.target.style.opacity = "1";
-    
-        //console.log(window.getComputedStyle(e.target).backgroundPosition)--for checking the corectness
-      };
+
+    };
 
     return (
         <Styled.PuzzleBoard>
@@ -87,28 +85,24 @@ const GameView = ({ animalData, imgSize, faded, setFaded }) => {
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
-                    faded={faded}
                     />
                 <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
-                    faded={faded}
                     />
                 <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
-                    faded={faded}
                     />
                 <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
-                    faded={faded}
                     />
             </Styled.DropZone>
             <Styled.PiecesContainer id="pieces-container">
