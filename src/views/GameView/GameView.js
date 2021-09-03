@@ -1,96 +1,13 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 import { shuffleArray } from 'helpers/shuffleArray';
+import * as Styled from './GameViewStyles';
 
-const halfSize = css`
-    width: ${props => props.imgSize.width/2 +'px'};
-    height: ${props => props.imgSize.height/2 +'px'};
-`;
 
-const fullWidth = css`
-    width: ${props => props.imgSize.width +'px'}
-`;
-
-const fullHeight = css`
-    height: ${props => props.imgSize.height +'px'};
-`;
-
-const bgImage = css`
-    background-image: url('${props => props.animalData.image}');
-`;
-
-const bgPosition_1 = css`
-    background-position: right ${props => props.imgSize.width/2 +'px'} bottom ${props => props.imgSize.height/2 +'px'};
-`;
-
-const bgPosition_2 = css`
-    background-position: right ${props => props.imgSize.width +'px'} bottom ${props => props.imgSize.height/2 +'px'};
-`;
-
-const bgPosition_3 = css`
-    background-position: right ${props => props.imgSize.width/2 +'px'} bottom ${props => props.imgSize.height +'px'};
-`;
-const bgPosition_4 = css`
-    background-position: right ${props => props.imgSize.width +'px'} bottom ${props => props.imgSize.height +'px'};
-`;
-
-const Puzzle = styled.div`
-    ${halfSize}
-    ${bgImage};
-`;
-
-const Piece1 = styled(Puzzle)`
-    ${bgPosition_1}
-`;
-const Piece2 = styled(Puzzle)`
-    ${bgPosition_2}
-`;
-const Piece3 = styled(Puzzle)`
-    ${bgPosition_3}
-`;
-const Piece4 = styled(Puzzle)`
-    ${bgPosition_4}
-`;
-
-const PiecesContainer = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-`;
-
-const DropZone = styled(PiecesContainer)`
-    ${fullWidth};
-    ${fullHeight};
-`;
-
-const DropField = styled.div`
-    ${halfSize}
-    ${bgImage}
-    opacity: 0.5;
-
-    &:first-child {
-        ${bgPosition_1}
-    }
-    &:nth-child(2) {
-        ${bgPosition_2}
-    }
-    &:nth-child(3) {
-        ${bgPosition_3}
-    }
-    &:last-child {
-        ${bgPosition_4}
-    }
-`;
-
-const PuzzleBoard = styled.div`
-    display: flex;
-    margin: 3em auto auto auto;
-    gap: 20px;
-`;
-
-const GameView = ({ animalData, imgSize }) => {
+const GameView = ({ animalData, imgSize, faded, setFaded }) => {
+    const dropZone = document.getElementById('dropZone');
    
     const pieces = [
-        <Piece1 
+        <Styled.Piece1 
             draggable="true" 
             key="piece1" 
             animalData={animalData} 
@@ -100,7 +17,7 @@ const GameView = ({ animalData, imgSize }) => {
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
             />,
-        <Piece2 
+        <Styled.Piece2 
             draggable="true" 
             key="piece2" 
             animalData={animalData} 
@@ -110,7 +27,7 @@ const GameView = ({ animalData, imgSize }) => {
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
         />,
-        <Piece3 
+        <Styled.Piece3 
             draggable="true" 
             key="piece3" 
             animalData={animalData} 
@@ -120,7 +37,7 @@ const GameView = ({ animalData, imgSize }) => {
             onDrop={e => handleDrop(e)}
             onDragOver={e => handleDragOver(e)}
         />,
-        <Piece4 
+        <Styled.Piece4 
             draggable="true" 
             key="piece4" 
             animalData={animalData} 
@@ -134,8 +51,14 @@ const GameView = ({ animalData, imgSize }) => {
 
     shuffleArray(pieces);
 
+//------------------------------DnD Logic-----------------------------------------------
     const handleDragStart = e => {
+
         e.dataTransfer.setData("text/plain", e.target.id);
+
+        if (dropZone.contains(e.target)) {
+            e.target.parentElement.style.opacity="0.5";
+        } 
       };
 
     const handleDragOver = e => {
@@ -144,44 +67,54 @@ const GameView = ({ animalData, imgSize }) => {
 
       const handleDrop = e => {
         e.preventDefault();
+        
         let data = e.dataTransfer.getData("text/plain");
+      
         e.target.appendChild(document.getElementById(data));
         e.target.style.opacity = "1";
+    
+        //console.log(window.getComputedStyle(e.target).backgroundPosition)--for checking the corectness
       };
 
     return (
-        <PuzzleBoard>
-            <DropZone imgSize={imgSize} 
+        <Styled.PuzzleBoard>
+            <Styled.DropZone 
+                id="dropZone"
+                imgSize={imgSize}
                         >
-                <DropField
+                <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
+                    faded={faded}
                     />
-                <DropField
+                <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
+                    faded={faded}
                     />
-                <DropField
+                <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
+                    faded={faded}
                     />
-                <DropField
+                <Styled.DropField
                     imgSize={imgSize}
                     animalData={animalData}
                     onDrop={handleDrop}
                     onDragOver={handleDragOver}
+                    faded={faded}
                     />
-            </DropZone>
-            <PiecesContainer>
+            </Styled.DropZone>
+            <Styled.PiecesContainer id="pieces-container">
                 {pieces.map(item => item)}
-            </PiecesContainer>
-        </PuzzleBoard>
+            </Styled.PiecesContainer>
+        </Styled.PuzzleBoard>
     )
 }
 
