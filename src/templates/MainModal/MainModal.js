@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { AppContext } from 'AppContext/AppContext';
 import { 
-  ImageWrapper,
+  AnimalImage,
   LoadingWrapper,
   Error,
   ModalContainer,
@@ -17,8 +17,7 @@ const modalContainer = document.getElementById('modal-container')
 
 const MainModal = ({ isOpen, closeModal, status }) => {
 
-  const { animalData, setCurrentView } = useContext(AppContext);
-  const { setImgSize } = useContext(AppContext);
+  const { animalData, setCurrentView, setImgSize } = useContext(AppContext);
 
   function getImageSize(){
     let img=new Image();
@@ -49,7 +48,7 @@ const MainModal = ({ isOpen, closeModal, status }) => {
                     </LoadingWrapper> }
         { animalData 
           && !status.isFetching  
-          && <ImageWrapper animalData={animalData}/> }
+          && <AnimalImage src={animalData.image} alt="animal" animalData={animalData}/> }
         <NewGameButton onClick={startGame}>Start Game</NewGameButton>
       </ModalContainer>,
       modalContainer

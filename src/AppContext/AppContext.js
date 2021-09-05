@@ -15,8 +15,8 @@ export const AppContextProvider = ({ children }) => {
                                     setAnimalData,
                                     currentView, 
                                     setCurrentView,
-                                    imgSize,
-                                    setImgSize,
+                                    imgSize, 
+                                    setImgSize
                                     }}>
             <GlobalStyle />
             {children}

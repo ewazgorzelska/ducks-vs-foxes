@@ -10,16 +10,14 @@ const flex = css`
 
 export const ContentWrapper = styled.div`
     margin: 0 20px 0 20px;
-    height: 300px;
-    width: 300px;
+    width: 100%;
+    height: 100%;
 `;
 
-export const ImageWrapper = styled(ContentWrapper)`
-  background-image: url('${props => props.animalData.image}');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 400px;
+export const AnimalImage = styled.img`
+  width: 300px;
+  height: 350px;
+  padding-top: 10px;
 `;
 
 export const LoadingWrapper = styled(ContentWrapper)`

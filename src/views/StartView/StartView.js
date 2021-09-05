@@ -20,7 +20,7 @@ const FOX_URL = 'https://randomfox.ca/floof/';
 const FILESTACK_URL = {
     FILESTACK: 'https://cdn.filestackcontent.com/',
     API_KEY,
-    PARAM: '/resize=width:400/'
+    PARAM: '/resize=width:300/'
 }
 
 const StartView = () => {
@@ -46,6 +46,7 @@ const StartView = () => {
                         + FILESTACK_URL.API_KEY 
                         + FILESTACK_URL.PARAM 
                         + response.data.url,
+                
             });
             setStatus({...status, isFetching: false});
         }
