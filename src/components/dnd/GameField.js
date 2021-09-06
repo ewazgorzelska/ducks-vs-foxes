@@ -4,8 +4,9 @@ import { AppContext } from 'AppContext/AppContext';
 import { Droppable } from 'react-beautiful-dnd';
 import Piece from 'components/dnd/Piece';
 
+
 const Container = styled.div`
-    margin: 8px;
+    margin: 5em auto;
     border: 1px solid lightgrey;
     border-radius: 2px;
 `;

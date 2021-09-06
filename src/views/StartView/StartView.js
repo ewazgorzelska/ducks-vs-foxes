@@ -56,20 +56,15 @@ const StartView = () => {
                 err, 
                 isFetching: false});
         });
-};
+    };
 
     const closeModal = () => {
         setOpen(!isOpen);
-    }
-    
-    const openFoxModal = () => {
-        setOpen(true);
-        fetchAnimal(FOX_URL);
-    }
+    };
 
-    const openDuckModal = () => {
+    const openAnimalModal = (url) => {
         setOpen(true);
-        fetchAnimal(DUCK_URL);
+        fetchAnimal(url);
     }
     
     return (
@@ -80,8 +75,8 @@ const StartView = () => {
                 <Animal2 />
             </AnimalWrapper>            
             <ButtonsWrapper>
-                <Button onClick={openDuckModal}>Quack</Button>
-                <Button onClick={openFoxModal}>Woof</Button>
+                <Button onClick={() => openAnimalModal(DUCK_URL)}>Quack</Button>
+                <Button onClick={() => openAnimalModal(FOX_URL)}>Woof</Button>
             </ButtonsWrapper>
             <MainModal isOpen={isOpen} closeModal={closeModal} status={status}/>
         </StartViewContainer>

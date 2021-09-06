@@ -1,3 +1,8 @@
+import { shufflePieces } from 'helpers/shufflePieces';
+
+const piecesIds = ["piece-1", "piece-2", "piece-3", "piece-4"];
+const shuffled = shufflePieces(piecesIds);
+
 const dndPattern = {
 
     pieces: {
@@ -34,7 +39,7 @@ const dndPattern = {
         "column-1": {
             id: "column-1",
             title: "Drop Zone",
-            piecesIds: ["piece-1", "piece-2", "piece-3", "piece-4"],
+            piecesIds: shuffled,
         },
     },
     columnOrder: ['column-1'],

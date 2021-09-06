@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-//import { shuffleArray } from 'helpers/shuffleArray';
 import { DragDropContext } from 'react-beautiful-dnd';
 import dndPattern from 'dndPattern';
 import GameField from 'components/dnd/GameField';
@@ -48,7 +47,6 @@ const GameView = ({ animalData }) => {
         <DragDropContext onDragEnd={onDragEnd}>
             {data.columnOrder.map(columnId => {
                 const column = data.columns[columnId];
-                
                 const pieces = column.piecesIds.map(
                     pieceId => data.pieces[pieceId]
                 );
