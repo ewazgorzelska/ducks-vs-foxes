@@ -3,9 +3,9 @@ import { AppContext } from 'AppContext/AppContext';
 import MainTemplate from 'templates/MainTemplate/MainTemplate';
 import StartView from 'views/StartView/StartView';
 import GameView from 'views/GameView/GameView';
+import PatternView from 'views/PatternView/PatternView';
 
 function App() {
-
   const { currentView, animalData, imgSize } = useContext(AppContext);
   return (
       <MainTemplate>
@@ -15,6 +15,7 @@ function App() {
           animalData={animalData}
           imgSize={imgSize} 
           />}
+        {currentView === 'PATTERN' && <PatternView animalData={animalData}/>}
       </MainTemplate>
   );
 }

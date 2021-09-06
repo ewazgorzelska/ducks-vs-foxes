@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AppContext } from 'AppContext/AppContext';
 import { DragDropContext } from 'react-beautiful-dnd';
 import dndPattern from 'dndPattern';
 import GameField from 'components/dnd/GameField';
+import { getOrderedIds } from 'helpers/getOrderedIds';
 
 const GameView = ({ animalData }) => {
 
     const [ data, setData ] = useState(dndPattern);
-
+    const { setCurrentView } = useContext(AppContext);
+ 
     const onDragEnd = result => {
 
         const { destination, source, draggableId } = result;
@@ -41,8 +44,12 @@ const GameView = ({ animalData }) => {
         }
     
         setData(newData);
+
+        if(newPieceIds.toString() === getOrderedIds(dndPattern.pieces).toString()) {
+          setCurrentView('PATTERN');
+        };
     }
-   
+    
     return (
         <DragDropContext onDragEnd={onDragEnd}>
             {data.columnOrder.map(columnId => {

@@ -21,7 +21,7 @@ const halfSize = css`
     height: ${props => props.imgSize.height/2 +'px'};
 `;
 
-const bgImage = css`
+export const bgImage = css`
     background-image: url('${props => props.animalData.image}');
 `;
 
