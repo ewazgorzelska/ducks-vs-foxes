@@ -1,11 +1,10 @@
 export const getOrderedIds = (obj) => {
-    const arrOfIds = [];
+  const arrOfIds = [];
 
-    Object.keys(obj).forEach(key => {
-      if (typeof obj[key] === 'object') {
-          arrOfIds.push(obj[key].id);
-        }
-      } 
-    )
-    return arrOfIds;
-  }
+  Object.keys(obj).forEach((key) => {
+    if (typeof obj[key] === "object") {
+      arrOfIds.push(obj[key].id);
+    }
+  });
+  return arrOfIds;
+};

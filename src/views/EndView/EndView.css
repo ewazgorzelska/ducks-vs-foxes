@@ -1,0 +1,12 @@
+.party-icon {
+  animation: changeColor 3s linear infinite;
+}
+
+@keyframes changeColor {
+  0% {
+    color: #e3256b;
+  }
+  100% {
+    color: yellow;
+  }
+}

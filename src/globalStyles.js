@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
- 
+import { createGlobalStyle } from "styled-components";
+
 const GlobalStyle = createGlobalStyle`
 
 *:where(:not(iframe):not(canvas):not(img):not(svg):not(video):not(svg *)) {
@@ -22,5 +22,5 @@ const GlobalStyle = createGlobalStyle`
   }
 
 `;
- 
+
 export default GlobalStyle;

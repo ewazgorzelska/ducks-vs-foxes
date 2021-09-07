@@ -1,5 +1,6 @@
-import styled, { css } from 'styled-components';
-import { Button } from 'components/atoms/Button/Button';
+import styled, { css } from "styled-components";
+import { Button } from "components/atoms/Button/Button";
+import { bgImage } from "components/dnd/PieceStyles";
 
 const flex = css`
   display: flex;
@@ -8,16 +9,30 @@ const flex = css`
   justify-content: center;
 `;
 
-export const ContentWrapper = styled.div`
-    margin: 0 20px 0 20px;
-    width: 100%;
-    height: 100%;
+export const ModalContainer = styled.div`
+  min-width: 450px;
+  min-height: 450px;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  ${flex}
+  opacity: 1;
+  background-color: #dfe3ee;
 `;
 
-export const AnimalImage = styled.img`
-  width: 300px;
+export const ContentWrapper = styled.div`
+  width: 350px;
   height: 350px;
+`;
+
+export const AnimalImage = styled.div`
+  width: 300px;
+  height: 300px;
   padding-top: 10px;
+  ${bgImage}
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 `;
 
 export const LoadingWrapper = styled(ContentWrapper)`
@@ -31,31 +46,20 @@ export const Error = styled(LoadingWrapper)`
   background-color: pink;
 `;
 
-export const ModalContainer = styled.div`
-  min-width: 400px;
-  min-height: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  ${flex}
-  opacity: 1;
-  background-color: #dfe3ee;
-  `;
-
 export const CloseButton = styled.button`
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 0%;
-    right: 0%;
-    ${flex}
-    flex-direction: row;
+  width: 2vw;
+  height: 4vh;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  ${flex}
+  flex-direction: row;
+  cursor: pointer;
 `;
 
 export const NewGameButton = styled(Button)`
-    font-size: 20px;
-    width: 160px;
-    height: 40px;
-    margin-top: 15px;
+  font-size: 20px;
+  width: 160px;
+  height: 40px;
+  margin-top: 5vh;
 `;
