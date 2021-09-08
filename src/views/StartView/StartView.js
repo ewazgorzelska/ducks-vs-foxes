@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
-import { AppContext } from "AppContext/AppContext";
+import { AppContext } from "context/AppContext";
 import {
   StartViewContainer,
   GameTitle,
@@ -10,13 +10,13 @@ import {
   AnimalWrapper,
 } from "./StartViewStyles";
 import { Button } from "components/atoms/Button/Button";
-import MainModal from "templates/MainModal/MainModal";
+import MainModal from "components/MainModal/MainModal";
 import { API_KEY } from "filestack/api";
 
 const DUCK_URL = "https://random-d.uk/api/v2/random?type=jpg";
 const FOX_URL = "https://randomfox.ca/floof/";
 
-const FILESTACK_URL = {
+export const FILESTACK_URL = {
   FILESTACK: "https://cdn.filestackcontent.com/",
   API_KEY,
   PARAM: "/resize=width:300/",
@@ -57,9 +57,7 @@ const StartView = () => {
       });
   };
 
-  const closeModal = () => {
-    setOpen(!isOpen);
-  };
+  const closeModal = () => setOpen(!isOpen);
 
   const openAnimalModal = (url) => {
     setOpen(true);

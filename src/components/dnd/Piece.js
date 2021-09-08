@@ -2,7 +2,7 @@ import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { StyledPiece, Container } from "./PieceStyles";
 
-const Piece = ({ piece, index, animalData, imgSize }) => {
+const Piece = ({ piece, index, animalData, imgSize, level }) => {
   return (
     <Draggable draggableId={piece.id} index={index}>
       {(provided) => (
@@ -15,6 +15,7 @@ const Piece = ({ piece, index, animalData, imgSize }) => {
             piece={piece}
             animalData={animalData}
             imgSize={imgSize}
+            level={level}
           />
         </Container>
       )}

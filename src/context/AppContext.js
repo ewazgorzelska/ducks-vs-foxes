@@ -8,6 +8,7 @@ export const AppContextProvider = ({ children }) => {
   const [currentView, setCurrentView] = useState("START");
   const [imgSize, setImgSize] = useState({ width: 0, height: 0 });
   const [start, setStart] = useState();
+  const [level, setLevel] = useState();
 
   return (
     <AppContext.Provider
@@ -20,6 +21,8 @@ export const AppContextProvider = ({ children }) => {
         setImgSize,
         start,
         setStart,
+        level,
+        setLevel,
       }}
     >
       <GlobalStyle />

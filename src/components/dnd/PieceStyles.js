@@ -1,32 +1,41 @@
 import styled, { css } from "styled-components";
 
 const getPositionWidth = (props) => {
-  if (props.piece.bg.right === "half-w") {
-    return props.imgSize.width / 2;
-  } else if (props.piece.bg.right === "full-w") {
-    return props.imgSize.width;
+  const imageWidth = props.imgSize.width;
+  switch (props.piece.bg.right) {
+    case "half-w":
+      return imageWidth / 2;
+    case "full-w":
+      return imageWidth;
+    case "1third-w":
+      return imageWidth / 3;
+    case "2third-w":
+      return (imageWidth * 2) / 3;
+    default:
+      console.log("Wrong image width.");
   }
 };
 
 const getPositionHeight = (props) => {
-  if (props.piece.bg.bottom === "half-h") {
-    return props.imgSize.height / 2;
-  } else if (props.piece.bg.bottom === "full-h") {
-    return props.imgSize.height;
+  const imageHeight = props.imgSize.height;
+  switch (props.piece.bg.bottom) {
+    case "half-h":
+      return imageHeight / 2;
+    case "full-h":
+      return imageHeight;
+    default:
+      console.log("Wrong image height.");
   }
 };
 
-const halfSize = css`
-  width: ${(props) => props.imgSize.width / 2 + "px"};
-  height: ${(props) => props.imgSize.height / 2 + "px"};
-`;
-
 export const bgImage = css`
-  background-image: url("${(props) => props.animalData.image}");
+  background-image: url("${({ animalData }) => animalData.image}");
 `;
 
 export const StyledPiece = styled.div`
-  ${halfSize}
+  width: ${({ imgSize, level }) =>
+    level === 0 ? imgSize.width / 2 + "px" : imgSize.width / 3 + "px"};
+  height: ${({ imgSize }) => imgSize.height / 2 + "px"};
   ${bgImage}
   background-position: right ${(props) =>
     getPositionWidth(props) + "px"} bottom ${(props) =>

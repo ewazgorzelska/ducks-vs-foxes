@@ -19,6 +19,7 @@ export const ModalContainer = styled.div`
   ${flex}
   opacity: 1;
   background-color: #dfe3ee;
+  border: 1px solid lightgrey;
 `;
 
 export const ContentWrapper = styled.div`

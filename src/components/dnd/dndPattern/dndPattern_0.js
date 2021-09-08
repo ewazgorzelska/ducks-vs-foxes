@@ -1,6 +1,6 @@
 import { shufflePieces } from "helpers/shufflePieces";
 
-const dndPattern = {
+const dndPattern_0 = {
   pieces: {
     "piece-1": {
       id: "piece-1",
@@ -41,4 +41,4 @@ const dndPattern = {
   columnOrder: ["column-1"],
 };
 
-export default dndPattern;
+export default dndPattern_0;

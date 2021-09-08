@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { AppContext } from "AppContext/AppContext";
+import { AppContext } from "context/AppContext";
 import { Droppable } from "react-beautiful-dnd";
 import Piece from "components/dnd/Piece";
 
@@ -11,17 +11,22 @@ const Container = styled.div`
 `;
 const PiecesList = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: ${({ level }) =>
+    level === 0 ? "1fr 1fr" : "1fr 1fr 1fr"};
 `;
 
 const GameField = ({ column, pieces, animalData }) => {
-  const { imgSize } = useContext(AppContext);
+  const { imgSize, level } = useContext(AppContext);
 
   return (
     <Container>
       <Droppable droppableId={column.id}>
         {(provided) => (
-          <PiecesList ref={provided.innerRef} {...provided.droppableProps}>
+          <PiecesList
+            ref={provided.innerRef}
+            {...provided.droppableProps}
+            level={level}
+          >
             {pieces.map((piece, index) => {
               return (
                 <Piece
@@ -30,6 +35,7 @@ const GameField = ({ column, pieces, animalData }) => {
                   index={index}
                   animalData={animalData}
                   imgSize={imgSize}
+                  level={level}
                 />
               );
             })}

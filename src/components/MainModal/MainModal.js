@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
-import { AppContext } from "AppContext/AppContext";
+import axios from "axios";
+import { AppContext } from "context/AppContext";
 import {
   AnimalImage,
   LoadingWrapper,
@@ -12,26 +13,30 @@ import {
 } from "./MainModalStyles";
 import { GrFormClose } from "react-icons/gr";
 import { VscLoading } from "react-icons/vsc";
+import { FILESTACK_URL } from "views/StartView/StartView";
 
 const modalContainer = document.getElementById("modal-container");
 
 const MainModal = ({ isOpen, closeModal, status }) => {
-  const { animalData, setCurrentView, setImgSize, setStart } =
-    useContext(AppContext);
+  const { animalData, setCurrentView, setImgSize } = useContext(AppContext);
 
-  function getImageSize() {
-    let img = new Image();
-    img.src = animalData.image;
-    img.onload = function () {
-      const size = { width: this.width, height: this.height };
-      setImgSize({ width: size.width, height: size.height });
-    };
-  }
+  const getImageSize = (url) => {
+    axios
+      .get(
+        FILESTACK_URL.FILESTACK + FILESTACK_URL.API_KEY + "/imagesize/" + url
+      )
+      .then((response) => {
+        setImgSize({
+          height: response.data.height,
+          width: response.data.width,
+        });
+      })
+      .catch((err) => console.log(err + "No image size available"));
+  };
 
   const startGame = () => {
-    getImageSize();
-    setStart(new Date().getTime());
-    setCurrentView("GAME");
+    getImageSize(animalData.image);
+    setCurrentView("LEVEL");
   };
 
   return (

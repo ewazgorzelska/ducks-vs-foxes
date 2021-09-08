@@ -1,13 +1,14 @@
 import React, { useState, useContext } from "react";
-import { AppContext } from "AppContext/AppContext";
+import { AppContext } from "context/AppContext";
 import { DragDropContext } from "react-beautiful-dnd";
-import dndPattern from "dndPattern";
+import dndPattern_0 from "components/dnd/dndPattern/dndPattern_0";
+import dndPattern_1 from "components/dnd/dndPattern/dndPattern_1";
 import GameField from "components/dnd/GameField";
 import { getOrderedIds } from "helpers/getOrderedIds";
 
 const GameView = ({ animalData }) => {
-  const [data, setData] = useState(dndPattern);
-  const { setCurrentView } = useContext(AppContext);
+  const { setCurrentView, level } = useContext(AppContext);
+  const [data, setData] = useState(level === 0 ? dndPattern_0 : dndPattern_1);
 
   const onDragEnd = (result) => {
     const { destination, source, draggableId } = result;
@@ -43,9 +44,7 @@ const GameView = ({ animalData }) => {
 
     setData(newData);
 
-    if (
-      newPieceIds.toString() === getOrderedIds(dndPattern.pieces).toString()
-    ) {
+    if (newPieceIds.toString() === getOrderedIds(data.pieces).toString()) {
       setCurrentView("PATTERN");
 
       setTimeout(() => {

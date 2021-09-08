@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { StartViewContainer, GameTitle } from "views/StartView/StartViewStyles";
-import { NewGameButton } from "templates/MainModal/MainModalStyles";
-import { AppContext } from "AppContext/AppContext";
+import { NewGameButton } from "components/MainModal/MainModalStyles";
+import { AppContext } from "context/AppContext";
 import { prepareTime } from "helpers/prepareTime";
 import { GiPartyPopper } from "react-icons/gi";
 import "./EndView.css";
