@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { bgImage } from "components/dnd/PieceStyles";
-import { animalSize } from "components/MainModal/MainModalStyles";
+import { bgImage } from "components/Game/Piece/PieceStyles";
+import { animalSize } from "components/Modal/ModalStyles";
 
 const Pattern = styled.div`
   ${bgImage}

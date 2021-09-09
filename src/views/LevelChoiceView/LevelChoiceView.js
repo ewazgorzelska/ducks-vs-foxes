@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
-//import styled from 'styled-components';
 import { AppContext } from "context/AppContext";
 import {
   StartViewContainer as LevelChoiceContainer,
   GameTitle as LevelChoiceHeading,
 } from "views/StartView/StartViewStyles";
-import { NewGameButton as ChoiceButton } from "components/MainModal/MainModalStyles";
+import { NewGameButton as ChoiceButton } from "components/Modal/ModalStyles";
 
 const LevelChoiceView = () => {
   const { setLevel, setCurrentView, setStart } = useContext(AppContext);

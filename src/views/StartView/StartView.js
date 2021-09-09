@@ -10,7 +10,7 @@ import {
   AnimalWrapper,
 } from "./StartViewStyles";
 import { Button } from "components/Button/Button";
-import MainModal from "components/MainModal/MainModal";
+import Modal from "components/Modal/Modal";
 import { API_KEY } from "filestack/api";
 
 const DUCK_URL = "https://random-d.uk/api/v2/random?type=jpg";
@@ -75,7 +75,7 @@ const StartView = () => {
         <Button onClick={() => openAnimalModal(DUCK_URL)}>Quack</Button>
         <Button onClick={() => openAnimalModal(FOX_URL)}>Woof</Button>
       </ButtonsWrapper>
-      <MainModal isOpen={isOpen} closeModal={closeModal} status={status} />
+      <Modal isOpen={isOpen} closeModal={closeModal} status={status} />
     </StartViewContainer>
   );
 };

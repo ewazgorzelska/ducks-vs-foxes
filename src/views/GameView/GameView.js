@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import { AppContext } from "context/AppContext";
 import { DragDropContext } from "react-beautiful-dnd";
-import dndPattern_0 from "components/dnd/dndPattern/dndPattern_0";
-import dndPattern_1 from "components/dnd/dndPattern/dndPattern_1";
-import GameField from "components/dnd/GameField";
+import dndPattern_0 from "components/Game/dndPattern/dndPattern_0";
+import dndPattern_1 from "components/Game/dndPattern/dndPattern_1";
+import GameField from "components/Game/GameField";
 import { getOrderedIds } from "helpers/getOrderedIds";
 
 const GameView = ({ animalData }) => {

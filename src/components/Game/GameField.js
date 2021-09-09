@@ -2,11 +2,10 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { AppContext } from "context/AppContext";
 import { Droppable } from "react-beautiful-dnd";
-import Piece from "components/dnd/Piece";
+import Piece from "components/Game/Piece/Piece";
 
 const Container = styled.div`
   border: 1px solid grey;
-  border-radius: 2px;
   margin-top: 30vh;
 `;
 const PiecesList = styled.div`

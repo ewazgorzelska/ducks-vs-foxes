@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { Button } from "components/Button/Button";
-import { bgImage } from "components/dnd/PieceStyles";
+import { bgImage } from "components/Game/Piece/PieceStyles";
 import { GrFormClose } from "react-icons/gr";
 import { device } from "responsiveStyles/breakpoints";
 

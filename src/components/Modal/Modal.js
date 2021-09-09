@@ -11,13 +11,13 @@ import {
   CloseButton,
   CloseIcon,
   NewGameButton,
-} from "./MainModalStyles";
+} from "./ModalStyles";
 import { VscLoading } from "react-icons/vsc";
 import { FILESTACK_URL } from "views/StartView/StartView";
 
 const modalContainer = document.getElementById("modal-container");
 
-const MainModal = ({ isOpen, closeModal, status }) => {
+const Modal = ({ isOpen, closeModal, status }) => {
   const { animalData, setCurrentView, setImgSize } = useContext(AppContext);
 
   const getImageSize = (url) => {
@@ -65,10 +65,10 @@ const MainModal = ({ isOpen, closeModal, status }) => {
   );
 };
 
-MainModal.propTypes = {
+Modal.propTypes = {
   isOpen: PropTypes.bool,
   toggleModal: PropTypes.func,
   children: PropTypes.element,
 };
 
-export default MainModal;
+export default Modal;
