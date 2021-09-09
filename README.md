@@ -7,7 +7,7 @@ Ducks vs Foxes is a game that I built as a new, better and more fun sequel of a 
 - React.js 17.0.2
 - Styled Components 5.3.1
 - Axios 0.21.1
-- React Beautiful DnD 13.1.0  
+- React Beautiful DnD 13.1.0
 - React Icons 4.2.0
 - Eslint 7.32.0
 - Prettier 2.3.2
@@ -19,6 +19,4 @@ Ducks vs Foxes is a game that I built as a new, better and more fun sequel of a 
 - enables two game levels,
 - counts your game time and displays is in the end view.
 
-
-
-
+Enjoy the game here: https://ducks-vs-foxes.netlify.app/

@@ -56,9 +56,11 @@ const Modal = ({ isOpen, closeModal, status }) => {
           </LoadingWrapper>
         )}
         {animalData && !status.isFetching && (
-          <AnimalImage animalData={animalData} />
+          <>
+            <AnimalImage animalData={animalData} />
+            <NewGameButton onClick={startGame}>Start Game</NewGameButton>
+          </>
         )}
-        <NewGameButton onClick={startGame}>Start Game</NewGameButton>
       </ModalContainer>,
       modalContainer
     )

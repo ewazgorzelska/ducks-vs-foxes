@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import axios from "axios";
 import { AppContext } from "context/AppContext";
 import {
   StartViewContainer,
@@ -32,20 +31,20 @@ const StartView = () => {
 
   const fetchAnimal = (url) => {
     setStatus({ ...status, isFetching: true });
-    axios
-      .get(url)
-      .then((response) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
         setAnimalData({
           image:
             url === FOX_URL
               ? FILESTACK_URL.FILESTACK +
                 FILESTACK_URL.API_KEY +
                 FILESTACK_URL.PARAM +
-                response.data.image
+                data.image
               : FILESTACK_URL.FILESTACK +
                 FILESTACK_URL.API_KEY +
                 FILESTACK_URL.PARAM +
-                response.data.url,
+                data.url,
         });
         setStatus({ ...status, isFetching: false });
       })
