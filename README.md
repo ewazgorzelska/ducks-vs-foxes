@@ -19,6 +19,6 @@ Ducks vs Foxes is a game that I built as a new, better and more fun sequel of a 
 - enables two game levels,
 - counts your game time and displays is in the end view.
 
-
+Enjoy the game here: https://ducks-vs-foxes.netlify.app/
 
 
