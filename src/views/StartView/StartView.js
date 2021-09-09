@@ -9,7 +9,7 @@ import {
   Animal2,
   AnimalWrapper,
 } from "./StartViewStyles";
-import { Button } from "components/atoms/Button/Button";
+import { Button } from "components/Button/Button";
 import MainModal from "components/MainModal/MainModal";
 import { API_KEY } from "filestack/api";
 

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AppContext } from "context/AppContext";
-import MainTemplate from "templates/MainTemplate/MainTemplate";
+import MainTemplate from "components/MainTemplate/MainTemplate";
 import StartView from "views/StartView/StartView";
 import GameView from "views/GameView/GameView";
 import PatternView from "views/PatternView/PatternView";

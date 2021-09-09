@@ -9,9 +9,9 @@ import {
   Error,
   ModalContainer,
   CloseButton,
+  CloseIcon,
   NewGameButton,
 } from "./MainModalStyles";
-import { GrFormClose } from "react-icons/gr";
 import { VscLoading } from "react-icons/vsc";
 import { FILESTACK_URL } from "views/StartView/StartView";
 
@@ -44,7 +44,7 @@ const MainModal = ({ isOpen, closeModal, status }) => {
     ReactDOM.createPortal(
       <ModalContainer>
         <CloseButton onClick={closeModal}>
-          <GrFormClose size={32} />
+          <CloseIcon />
         </CloseButton>
         {status.err && !status.isFetching && (
           <Error status={status}>Error!</Error>

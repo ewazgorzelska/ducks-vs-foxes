@@ -1,6 +1,8 @@
 import styled, { css } from "styled-components";
-import { Button } from "components/atoms/Button/Button";
+import { Button } from "components/Button/Button";
 import { bgImage } from "components/dnd/PieceStyles";
+import { GrFormClose } from "react-icons/gr";
+import { device } from "responsiveStyles/breakpoints";
 
 const flex = css`
   display: flex;
@@ -9,34 +11,50 @@ const flex = css`
   justify-content: center;
 `;
 
+export const animalSize = css`
+  width: 75vw;
+  height: 45vh;
+
+  @media ${device.laptop} {
+    width: 60vw;
+  }
+
+  @media ${device.laptopL} {
+    width: 25vw;
+    height: 37vh;
+  }
+`;
+
 export const ModalContainer = styled.div`
-  min-width: 450px;
-  min-height: 450px;
+  width: 90%;
+  height: 63%;
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   ${flex}
   opacity: 1;
   background-color: #dfe3ee;
   border: 1px solid lightgrey;
-`;
 
-export const ContentWrapper = styled.div`
-  width: 350px;
-  height: 350px;
+  @media ${device.laptop} {
+    width: 70vw;
+  }
+  @media ${device.laptopL} {
+    width: 30vw;
+    height: 55vh;
+  }
 `;
 
 export const AnimalImage = styled.div`
-  width: 300px;
-  height: 300px;
-  padding-top: 10px;
+  margin-top: 12px;
   ${bgImage}
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  ${animalSize}
 `;
 
-export const LoadingWrapper = styled(ContentWrapper)`
+export const LoadingWrapper = styled.div`
   font-size: 20px;
   font-weight: 700;
   gap: 20px;
@@ -48,19 +66,29 @@ export const Error = styled(LoadingWrapper)`
 `;
 
 export const CloseButton = styled.button`
-  width: 2vw;
-  height: 4vh;
   position: absolute;
   top: 0%;
   right: 0%;
   ${flex}
   flex-direction: row;
   cursor: pointer;
+  font-size: 20px;
+
+  @media ${device.tablet} {
+    font-size: 40px;
+  }
 `;
 
 export const NewGameButton = styled(Button)`
-  font-size: 20px;
-  width: 160px;
-  height: 40px;
-  margin-top: 5vh;
+  width: 45vw;
+  margin-top: 3vh;
+
+  @media ${device.laptop} {
+    width: 25vw;
+  }
+  @media ${device.laptopL} {
+    width: 15vw;
+  }
 `;
+
+export const CloseIcon = styled(GrFormClose)``;
