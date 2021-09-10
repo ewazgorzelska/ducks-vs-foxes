@@ -17,6 +17,6 @@ Ducks vs Foxes is a game that I built as a new, better and more fun sequel of a 
 - gets a random image of a cute duck or funny fox from public apis,
 - splits the image in puzzle pieces,
 - enables two game levels,
-- counts your game time and displays is in the end view.
+- counts your game time and displays it in the end view.
 
 Enjoy the game here: https://ducks-vs-foxes.netlify.app/
