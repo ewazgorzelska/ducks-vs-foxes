@@ -46,8 +46,10 @@ const Modal = ({ isOpen, closeModal, status }) => {
         <CloseButton onClick={closeModal}>
           <CloseIcon />
         </CloseButton>
-        {status.err && !status.isFetching && (
-          <Error status={status}>Error!</Error>
+        {status.err && !status.isFetching && !animalData && (
+          <Error animalData={animalData} status={status}>
+            Error!
+          </Error>
         )}
         {status.isFetching && (
           <LoadingWrapper status={status}>

@@ -57,7 +57,10 @@ const StartView = () => {
       });
   };
 
-  const closeModal = () => setOpen(!isOpen);
+  const closeModal = () => {
+    setOpen(!isOpen);
+    setAnimalData("");
+  };
 
   const openAnimalModal = (url) => {
     setOpen(true);

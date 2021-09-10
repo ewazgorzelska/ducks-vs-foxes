@@ -23,5 +23,4 @@ Enjoy the game here: https://ducks-vs-foxes.netlify.app/
 <<<<<<< HEAD
 =======
 
-
->>>>>>> 5e27e243de20f64982c90d2aab145bcb08150e64
+> > > > > > > 5e27e243de20f64982c90d2aab145bcb08150e64
