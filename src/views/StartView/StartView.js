@@ -13,7 +13,8 @@ import { Button } from "components/Button/Button";
 import Modal from "components/Modal/Modal";
 import { API_KEY } from "filestack/api";
 
-const DUCK_URL = "https://random-d.uk/api/v2/random?type=jpg";
+const DUCK_URL =
+  "https://cors-anywhere.herokuapp.com/https://random-d.uk/api/v2/random?type=jpg";
 const FOX_URL = "https://randomfox.ca/floof/";
 
 export const FILESTACK_URL = {
