@@ -14,7 +14,7 @@ Cats vs Foxes is a game that I built as a new, better and more fun sequel of a d
 
 ## Features
 
-- gets a random image of a cute duck or funny fox from public apis,
+- gets a random image of a cute cat or funny fox from public apis,
 - splits the image in puzzle pieces,
 - enables two game levels,
 - counts your game time and displays it in the end view.
