@@ -1,6 +1,6 @@
-# Ducks vs Foxes - jigsaw puzzle game
+# Cats vs Foxes - jigsaw puzzle game
 
-Ducks vs Foxes is a game that I built as a new, better and more fun sequel of a different project of mine: Jigsaw Puzzle. It is a challenge that I was assigned to in a recruitement process. My task was to rewrite the above mentioned existing project to React.js and add some new features.
+Cats vs Foxes is a game that I built as a new, better and more fun sequel of a different project of mine: Jigsaw Puzzle. It is a challenge that I was assigned to in a recruitement process. My task was to rewrite the above mentioned existing project to React.js and add some new features.
 
 ## Technologies
 
@@ -19,4 +19,4 @@ Ducks vs Foxes is a game that I built as a new, better and more fun sequel of a 
 - enables two game levels,
 - counts your game time and displays it in the end view.
 
-Enjoy the game here: https://ducks-vs-foxes.netlify.app/
+Enjoy the game here: https://cats-vs-foxes.netlify.app/

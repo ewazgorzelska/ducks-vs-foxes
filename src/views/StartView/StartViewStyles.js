@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import duck from "assets/duck.png";
 import fox from "assets/fox.jpg";
 import { device } from "responsiveStyles/breakpoints";
 
@@ -42,7 +41,7 @@ export const ButtonsWrapper = styled.div`
 export const Animal1 = styled.div`
   width: 30vw;
   height: 15vh;
-  background-image: url(${duck});
+  background-image: url('https://cdn2.thecatapi.com/images/_XRdyTmPV.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 37% 50%;
